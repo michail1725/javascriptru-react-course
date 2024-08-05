@@ -1,25 +1,6 @@
-import { useState } from "react";
-
-const useDishCounter = () => {
-
-    const max = 5;
-    const min = 0;
-
-    const [counter,setCount] = useState(0);
-
-    const increaseCounter = () => {
-        setCount((prevState)=>prevState+1 > max ? prevState : prevState+1);
-      }
-    const decreaseCounter = () => {
-        setCount((prevState)=>prevState-1 < min ? prevState : prevState-1);
-      }
-    return {counter,increaseCounter,decreaseCounter}
-};
+import { CounterContainer } from "../counter/container";
 
 export const Menu=({name, price, ingredients})=>{
-
-    const {counter,increaseCounter,decreaseCounter} = useDishCounter();
-
     return (
     <div>
         <li>
@@ -29,10 +10,8 @@ export const Menu=({name, price, ingredients})=>{
             <ul>
                 {ingredients?.length ? ingredients.map((value) =><li key={value}>{value}</li>) : <div>-</div>}
             </ul>
+            <CounterContainer></CounterContainer>
         </li>
-         <button onClick={increaseCounter}>+</button>
-         {counter}
-         <button onClick={decreaseCounter}>-</button>
     </div>
      );
  }

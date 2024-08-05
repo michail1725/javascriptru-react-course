@@ -1,5 +1,6 @@
 import { Menu } from "../menu/component.jsx"
 import { Review } from "../review/component.jsx"
+import { ReviewForm } from "../reviewForm/component.jsx";
 
 
 export const Restaurant = ({ name, menu, reviews }) => {
@@ -15,6 +16,7 @@ export const Restaurant = ({ name, menu, reviews }) => {
                 <ul>
                     {reviews?.length ?  reviews.map(({id,user,rating,text}) => <Review key={id} user = {user} rating = {rating} text={text}/>) : <div>-</div>}
                 </ul>
+            <ReviewForm></ReviewForm>
             <hr></hr>
         </div>
    );
